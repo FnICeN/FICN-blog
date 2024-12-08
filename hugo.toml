@@ -1,0 +1,30 @@
+baseURL = 'https://blog.fnicen.top/'
+title = "FICN's blog"
+theme = 'PaperMod'
+paginate = 5
+
+[params.profileMode]
+enabled = true
+title = "FICN的博客"
+subtitle = "欢迎"
+
+[[params.profileMode.buttons]]
+name = "发布"
+url = "/posts"
+[[params.profileMode.buttons]]
+name = "归档"
+url = "/archives"
+[[params.profileMode.buttons]]
+name = "关于"
+url = "/about"
+
+# [[params.socialIcons]]
+# name = "bilibili"
+# url = "https://space.bilibili.com/8579681"
+
+[[params.socialIcons]]
+name = "Github"
+url = "https://github.com/FnICeN"
+
+
+
