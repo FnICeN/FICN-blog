@@ -1,4 +1,4 @@
-baseURL = 'https://blog.fnicen.top/'
+baseURL = 'https://ficn-blog.pages.dev/'
 title = "FICN's blog"
 theme = 'PaperMod'
 paginate = 5
