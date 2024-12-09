@@ -1,7 +1,7 @@
 baseURL = 'https://ficn-blog.pages.dev/'
 title = "FICN's blog"
 theme = 'PaperMod'
-paginate = 5
+pagination.pagerSize = 5
 
 [params.profileMode]
 enabled = true
