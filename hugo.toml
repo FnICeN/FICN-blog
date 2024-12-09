@@ -1,7 +1,14 @@
-baseURL = 'https://ficn-blog.pages.dev/'
+baseURL = 'https://blog.fnicen.top/'
 title = "FICN's blog"
 theme = 'PaperMod'
 pagination.pagerSize = 5
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+ShowCodeCopyButtons = true
 
 [params.profileMode]
 enabled = true
@@ -9,8 +16,11 @@ title = "FICN的博客"
 subtitle = "欢迎"
 
 [[params.profileMode.buttons]]
-name = "发布"
+name = "最新"
 url = "/posts"
+[[params.profileMode.buttons]]
+name = "分类"
+url = "/categories"
 [[params.profileMode.buttons]]
 name = "归档"
 url = "/archives"

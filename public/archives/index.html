@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>About | FICN&#39;s blog</title>
+<title>Archive | FICN&#39;s blog</title>
 <meta name="keywords" content="">
-<meta name="description" content="关于我自己">
+<meta name="description" content="archives">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/about/">
+<link rel="canonical" href="http://localhost:1313/archives/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d72444526d7ecbdb0015438a7fa89054a658bf759d0542e2e5df81ce94b493ee.css" integrity="sha256-1yREUm1&#43;y9sAFUOKf6iQVKZYv3WdBULi5d&#43;BzpS0k&#43;4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/about/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/archives/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,7 +58,7 @@
 </noscript>
 </head>
 
-<body class="" id="top">
+<body class="list" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -103,28 +103,57 @@
 </header>
 <main class="main">
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      About
-    </h1>
-    <div class="post-meta"><span title='2024-12-08 22:15:17 +0800 CST'>December 8, 2024</span>
-
-</div>
-  </header> 
-  <div class="post-content"><p>关于我自己</p>
-
-
+<header class="page-header">
+  <h1>
+    Archive
+  </h1>
+</header>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2024">
+    <a class="archive-header-link" href="#2024">2024</a>
+    <sup class="archive-count">&nbsp;1</sup>
+  </h2>
+  <div class="archive-month">
+    <h3 class="archive-month-header" id="2024-December">
+      <a class="archive-header-link" href="#2024-December">December</a>
+      <sup class="archive-count">&nbsp;1</sup>
+    </h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">First Post
+        </h3>
+        <div class="archive-meta"><span title='2024-12-08 21:35:47 +0800 CST'>December 8, 2024</span></div>
+        <a class="entry-link" aria-label="post link to First Post" href="http://localhost:1313/posts/first-post/"></a>
+      </div>
+    </div>
   </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-    <ul class="post-categories">
-    </ul>
-  </footer>
-</article>
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header" id="2022">
+    <a class="archive-header-link" href="#2022">2022</a>
+    <sup class="archive-count">&nbsp;2</sup>
+  </h2>
+  <div class="archive-month">
+    <h3 class="archive-month-header" id="2022-September">
+      <a class="archive-header-link" href="#2022-September">September</a>
+      <sup class="archive-count">&nbsp;2</sup>
+    </h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">Stream流遍历处理字符串中各字符
+        </h3>
+        <div class="archive-meta"><span title='2022-09-06 20:34:54 +0800 CST'>September 6, 2022</span></div>
+        <a class="entry-link" aria-label="post link to Stream流遍历处理字符串中各字符" href="http://localhost:1313/posts/stream%E6%B5%81%E9%81%8D%E5%8E%86%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%90%84%E5%AD%97%E7%AC%A6/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">Stream流进行数组排序
+        </h3>
+        <div class="archive-meta"><span title='2022-09-05 09:49:04 +0800 CST'>September 5, 2022</span></div>
+        <a class="entry-link" aria-label="post link to Stream流进行数组排序" href="http://localhost:1313/posts/stream%E6%B5%81%E8%BF%9B%E8%A1%8C%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F/"></a>
+      </div>
+    </div>
+  </div>
+</div>
     </main>
     
 <footer class="footer">
@@ -195,53 +224,6 @@
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
 </script>
 </body>
 

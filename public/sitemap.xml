@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2024-12-08T22:15:17+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-12-08T22:15:17+08:00</lastmod>
   </url><url>
@@ -12,7 +15,26 @@
     <lastmod>2024-12-08T21:35:47+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2022-09-06T20:34:54+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/java/</loc>
+    <lastmod>2022-09-06T20:34:54+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/java%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-09-06T20:34:54+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/stream%E6%B5%81/</loc>
+    <lastmod>2022-09-06T20:34:54+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/stream%E6%B5%81%E9%81%8D%E5%8E%86%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%90%84%E5%AD%97%E7%AC%A6/</loc>
+    <lastmod>2022-09-06T20:34:54+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2022-09-06T20:34:54+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/stream%E6%B5%81%E8%BF%9B%E8%A1%8C%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2022-09-05T09:49:04+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/archives/</loc>
   </url>
 </urlset>

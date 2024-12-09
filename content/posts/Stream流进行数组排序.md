@@ -2,6 +2,9 @@
 date = '2022-09-05T09:49:04+08:00'
 draft = false
 title = 'Stream流进行数组排序'
+tags = ["java", "Stream流"]
+categories = ["Java学习"]
+showToc = true
 
 +++
 
@@ -47,7 +50,7 @@ int[] res = temp.toArray();
 
 **Stream:**
 
-- Stream<T> of(T t)：返回一个Stream对象，其泛型是参数泛型
+- Stream\<T> of(T t)：返回一个Stream对象，其泛型是参数泛型
 - Stream sorted()：可带参可不带参
 - Object[] toArray()：返回一个Obj的数组
 

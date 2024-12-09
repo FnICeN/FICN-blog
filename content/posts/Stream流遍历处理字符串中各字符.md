@@ -2,6 +2,9 @@
 date = '2022-09-06T20:34:54+08:00'
 draft = false
 title = 'Stream流遍历处理字符串中各字符'
+tags = ["java", "Stream流"]
+categories = ["Java学习"]
+showToc = true
 
 +++
 
@@ -24,7 +27,7 @@ Stream<String> strsStream = Stream.of(strs);  //在这种情况下，流中的�
 
 如果我们的目的是处理数组中的每一个元素，那么对于Stream<T[]>这种类型的流我们一般是并不想见到的
 
-解决方法就是**使用基本类型流**，即**IntStream、DoubleStream**和**LongStream**，然后再操作（或对基本类型流先进行`boxed()`转为Stream<T>再操作），而得到基本类型流的方法有两种：
+解决方法就是**使用基本类型流**，即**IntStream、DoubleStream**和**LongStream**，然后再操作（或对基本类型流先进行`boxed()`转为Stream\<T>再操作），而得到基本类型流的方法有两种：
 
 1. `Arrays.stream()`
 2. `基本类型流名.of()`
@@ -44,11 +47,11 @@ System.out.println(new String(chars));
 
 **这次我舍近求远，想用Stream流来模拟生成凯撒密码密文的操作**
 
-根据Stream处理数组的特点，String转换成char[]之后，要想对数组的每个元素都进行操作，就要使用**基本类型流**，**但并没有char类型的基本类型流**，在这就导致我**只能得到Stream<char[]>，而得不到如CharStream或是Stream<Character>的流**
+根据Stream处理数组的特点，String转换成char[]之后，要想对数组的每个元素都进行操作，就要使用**基本类型流**，**但并没有char类型的基本类型流**，在这就导致我**只能得到Stream<char[]>，而得不到如CharStream或是Stream\<Character>的流**
 
 所以，不能将String转为char[]数组
 
-那么，借助String[]数组的流中可以遍历到数组中的每个元素的特点，考虑将String转为String[]数组，再使用`map()`将每个元素转换成char，这样才得到一个Stream<Character>：
+那么，借助String[]数组的流中可以遍历到数组中的每个元素的特点，考虑将String转为String[]数组，再使用`map()`将每个元素转换成char，这样才得到一个Stream\<Character>：
 
 ```java
 Stream<String> t = Stream.of(str.split(""));
@@ -61,7 +64,7 @@ chStream = t.map(ch -> (char)((ch-'a'+1)%26+'a');
 */
 ```
 
-得到了Stream<Character>以后，才能正式地开始遍历每个字符并处理。处理结束后，将Stream<Character>重新拼接成字符串即可
+得到了Stream\<Character>以后，才能正式地开始遍历每个字符并处理。处理结束后，将Stream\<Character>重新拼接成字符串即可
 
 关于将泛型为字符的流拼接成字符串，存在多种方法，我只列出其中两种作为参考：
 
@@ -111,7 +114,7 @@ String res = sb.toString();
 
 ## 列表 -> 字符数组 -> 字符串
 
-也可以使用返回一个Collector对象的`Collectors.toList()`方法将流转为List<Character>，接着对这个列表使用`toArray()`方法将之转化成字符数组Character[]，最后使用`Arrays.toString()`将字符数组转化为字符串
+也可以使用返回一个Collector对象的`Collectors.toList()`方法将流转为List\<Character>，接着对这个列表使用`toArray()`方法将之转化成字符数组Character[]，最后使用`Arrays.toString()`将字符数组转化为字符串
 
 ```java
 List<Character> collect = chStream.collect(Collectors.toList());
