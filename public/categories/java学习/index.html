@@ -99,6 +99,26 @@
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts" title="最新">
+                    <span>最新</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -126,7 +146,7 @@ Arrays.stream() 基本类型流名.of() Stream处理字符串 - 以凯撒密码�
 Stream&lt;String&gt; t = Stream.of(str.split(&#34;&#34;)); //str:{&#34;h&#34;,&#34;e&#34;,&#34;l&#34;,&#34;l&#34;,&#34;o&#34;} Stream&lt;Character&gt; chStream = t.map(s -&gt; s.charAt(0)); chStream = t.map(ch -&gt; (char)((ch-&#39;a&#39;&#43;1)%26&#43;&#39;a&#39;); /* * 也可直接一步完成操作： * s -&gt; (char)((s.charAt(0)-&#39;a&#39;&#43;1)%26&#43;&#39;a&#39;) */ 得到了Stream&lt;Character&gt;以后，才能正式地开始遍历每个字符并处理。处理结束后，将Stream&lt;Character&gt;重新拼接成字符串即可
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-09-06 20:34:54 +0800 CST'>September 6, 2022</span></footer>
+  <footer class="entry-footer"><span title='2022-09-06 20:34:54 +0800 CST'>September 6, 2022</span>&nbsp;·&nbsp;1 min</footer>
   <a class="entry-link" aria-label="post link to Stream流遍历处理字符串中各字符" href="http://localhost:1313/posts/stream%E6%B5%81%E9%81%8D%E5%8E%86%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%90%84%E5%AD%97%E7%AC%A6/"></a>
 </article>
 
@@ -147,7 +167,7 @@ Stream&lt;T&gt; of(T t)：返回一个Stream对象，其泛型是参数泛型 St
 IntStream of(int… values)：返回一个IntStream对象，直接存有数组每个元素 IntStream sorted()：只有无参的 int[] toArray()：返回一个int的数组 此外，Arrays.stream()也能返回一个IntStream对象，效果与IntStream.of()一致，且其针对数据数组有更多重载，泛用性更强
 </p>
   </div>
-  <footer class="entry-footer"><span title='2022-09-05 09:49:04 +0800 CST'>September 5, 2022</span></footer>
+  <footer class="entry-footer"><span title='2022-09-05 09:49:04 +0800 CST'>September 5, 2022</span>&nbsp;·&nbsp;1 min</footer>
   <a class="entry-link" aria-label="post link to Stream流进行数组排序" href="http://localhost:1313/posts/stream%E6%B5%81%E8%BF%9B%E8%A1%8C%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F/"></a>
 </article>
     </main>

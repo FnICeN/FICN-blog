@@ -2,6 +2,7 @@ baseURL = 'https://blog.fnicen.top/'
 title = "FICN's blog"
 theme = 'PaperMod'
 pagination.pagerSize = 5
+# enableEmoji = true
 
 [taxonomies]
 tag = "tags"
@@ -9,32 +10,59 @@ category = "categories"
 
 [params]
 ShowCodeCopyButtons = true
+ShowReadingTime = true
 
 [params.profileMode]
 enabled = true
 title = "FICN的博客"
-subtitle = "欢迎"
+subtitle = "记录生活，分享技术"
+imageUrl = "/img/avatar.jpg"
 
-[[params.profileMode.buttons]]
-name = "最新"
-url = "/posts"
-[[params.profileMode.buttons]]
-name = "分类"
-url = "/categories"
-[[params.profileMode.buttons]]
-name = "归档"
-url = "/archives"
-[[params.profileMode.buttons]]
-name = "关于"
-url = "/about"
+# [[params.profileMode.buttons]]
+# name = "最新"
+# url = "/posts"
+# [[params.profileMode.buttons]]
+# name = "分类"
+# url = "/categories"
+# [[params.profileMode.buttons]]
+# name = "归档"
+# url = "/archives"
+# [[params.profileMode.buttons]]
+# name = "关于"
+# url = "/about"
 
 # [[params.socialIcons]]
 # name = "bilibili"
 # url = "https://space.bilibili.com/8579681"
 
 [[params.socialIcons]]
+name = "email"
+url = "mailto:fnicen@qq.com"
+[[params.socialIcons]]
 name = "Github"
 url = "https://github.com/FnICeN"
+
+[menu]
+#   [[menu.main]]
+#     name = "主页"
+#     url = "/"
+#     weight = 1
+  [[menu.main]]
+    name = "最新"
+    url = "/posts"
+    weight = 2
+  [[menu.main]]
+    name = "分类"
+    url = "/categories"
+    weight = 3
+  [[menu.main]]
+    name = "归档"
+    url = "/archives"
+    weight = 4
+  [[menu.main]]
+    name = "关于"
+    url = "/about"
+    weight = 5
 
 
 

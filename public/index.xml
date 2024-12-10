@@ -9,18 +9,11 @@
     <lastBuildDate>Sun, 08 Dec 2024 22:15:17 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About</title>
+      <title>关于</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Sun, 08 Dec 2024 22:15:17 +0800</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;关于我自己&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>First Post</title>
-      <link>http://localhost:1313/posts/first-post/</link>
-      <pubDate>Sun, 08 Dec 2024 21:35:47 +0800</pubDate>
-      <guid>http://localhost:1313/posts/first-post/</guid>
-      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World!&lt;/h1&gt;</description>
+      <description>&lt;p&gt;为什么每条隧道上面都有一座山？🧐&lt;/p&gt;</description>
     </item>
     <item>
       <title>Stream流遍历处理字符串中各字符</title>
