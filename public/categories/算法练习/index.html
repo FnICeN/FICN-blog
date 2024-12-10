@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>First Post | FICN&#39;s blog</title>
+<title>算法练习 | FICN&#39;s blog</title>
 <meta name="keywords" content="">
-<meta name="description" content="Hello World!">
+<meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/first-post/">
+<link rel="canonical" href="http://localhost:1313/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d72444526d7ecbdb0015438a7fa89054a658bf759d0542e2e5df81ce94b493ee.css" integrity="sha256-1yREUm1&#43;y9sAFUOKf6iQVKZYv3WdBULi5d&#43;BzpS0k&#43;4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,7 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/first-post/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,7 +59,7 @@
 </noscript>
 </head>
 
-<body class="" id="top">
+<body class="list" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -121,29 +122,33 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    算法练习
+  </h1>
+</header>
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      First Post
-    </h1>
-    <div class="post-meta"><span title='2024-12-08 21:35:47 +0800 CST'>December 8, 2024</span>
-
-</div>
-  </header> 
-  <div class="post-content"><h1 id="hello-world">Hello World!<a hidden class="anchor" aria-hidden="true" href="#hello-world">#</a></h1>
-
-
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">顺序统计
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>顺序统计的问题是：
+给定一组元素，找到其中第k大（小）的元素
+仅从功能实现上考虑，完全可以先对数组排序，然后直接取nums[k-1]作为结果输出。但这个方法是需要先对数组排序的，所以效率为$\Theta(nlogn)$，我们的目标是找到一种$\Theta(n)$的方法
+基于随机数的分治法 为了尽量压缩时间，可以考虑能不能在排序进行时就顺便找到所需元素，为此，可以使用快速排序算法中的分治思想
+在快速排序算法中，每选定一个基准数pivot，就需要将所有小于pivot的元素移动至其左侧、所有大于pivot的元素移动至其右侧，当全部移动完成时，左右指针会正好相遇在pivot元素上
+不难想到，当获得了pivot的索引值index，就可以直接检查index是否正好等于k-1（假设k指第k小的元素值），如果相等，则说明这个pivot就是要找的第k小的元素；如果不等，则进一步检查index与k-1之间的大小关系并确定新pivot：
+如果index &gt; k-1，说明要寻找的元素相较于pivot来说更小，那么去小于pivot的区域再找 如果index &lt; k-1，说明要寻找的元素相较于pivot来说更大，那么去大于pivot的区域再找 以上过程完全可以用递归来实现（事实上这也是快速排序所进行的过程），而在区域中选取pivot实际上是随机取得的。另外，当传入的左右限制left == right时，说明此区域仅有一个元素，需要寻找的只能是该元素，直接返回nums[left]即可
+代码实现（Java） 类的总体结构应为：
+import java.util.Random; class Find { private int[] nums; private int k; public Find(int[] nums) {...} public int getKElement(int k) {...} private int randomSelect(int left, int right) {...} // 递归部分，选取随机数、划分后判断 private int partition(int random, int p, int q) {...} // 划分部分 private void swap(int i, int j) {...} // 用于交换数组元素的工具方法 } 先编写划分部分的方法，输入数组、随机索引值、左右限制，输出划分后pivot的索引值：
+public int partition(int random, int p, int q) { while (p != q) { int pivot = nums[random]; while (pivot &gt; nums[p]) p&#43;&#43;; swap(nums, p, random); random = p; while (pivot &lt; nums[q]) q--; swap(nums, q, random); random = q; } return random; } 编写递归部分：
+...</p>
   </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-    <ul class="post-categories">
-    </ul>
-  </footer>
+  <footer class="entry-footer"><span title='2024-12-10 19:44:13 +0800 CST'>December 10, 2024</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to 顺序统计" href="http://localhost:1313/posts/%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1/"></a>
 </article>
     </main>
     
@@ -215,53 +220,6 @@
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
 </script>
 </body>
 

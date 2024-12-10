@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>算法 on FICN&#39;s blog</title>
+    <link>http://localhost:1313/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on FICN&#39;s blog</description>
+    <generator>Hugo -- 0.139.3</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Dec 2024 19:44:13 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>顺序统计</title>
+      <link>http://localhost:1313/posts/%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1/</link>
+      <pubDate>Tue, 10 Dec 2024 19:44:13 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1/</guid>
+      <description>&lt;p&gt;顺序统计的问题是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一组元素，找到其中第k大（小）的元素&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;仅从功能实现上考虑，完全可以先对数组排序，然后直接取&lt;code&gt;nums[k-1]&lt;/code&gt;作为结果输出。但这个方法是需要先对数组排序的，所以效率为$\Theta(nlogn)$，我们的目标是找到一种$\Theta(n)$的方法&lt;/p&gt;
+&lt;h2 id=&#34;基于随机数的分治法&#34;&gt;基于随机数的分治法&lt;/h2&gt;
+&lt;p&gt;为了尽量压缩时间，可以考虑能不能&lt;strong&gt;在排序进行时就顺便找到所需元素&lt;/strong&gt;，为此，可以使用快速排序算法中的分治思想&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在快速排序算法中，每选定一个基准数pivot，就需要将所有小于pivot的元素移动至其左侧、所有大于pivot的元素移动至其右侧，当全部移动完成时，左右指针会正好相遇在pivot元素上&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不难想到，当获得了pivot的索引值&lt;code&gt;index&lt;/code&gt;，就可以直接检查&lt;code&gt;index&lt;/code&gt;是否正好等于&lt;code&gt;k-1&lt;/code&gt;（假设&lt;code&gt;k&lt;/code&gt;指第k小的元素值），如果&lt;strong&gt;相等，则说明这个pivot就是要找的第k小的元素&lt;/strong&gt;；如果不等，则进一步检查&lt;code&gt;index&lt;/code&gt;与&lt;code&gt;k-1&lt;/code&gt;之间的大小关系并确定新pivot：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果&lt;code&gt;index &amp;gt; k-1&lt;/code&gt;，说明要寻找的元素相较于pivot来说更小，那么去小于pivot的区域再找&lt;/li&gt;
+&lt;li&gt;如果&lt;code&gt;index &amp;lt; k-1&lt;/code&gt;，说明要寻找的元素相较于pivot来说更大，那么去大于pivot的区域再找&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上过程完全可以用递归来实现（事实上这也是快速排序所进行的过程），而在区域中选取pivot实际上是随机取得的。另外，当传入的左右限制&lt;code&gt;left == right&lt;/code&gt;时，说明此区域仅有一个元素，需要寻找的只能是该元素，直接返回&lt;code&gt;nums[left]&lt;/code&gt;即可&lt;/p&gt;
+&lt;h3 id=&#34;代码实现java&#34;&gt;代码实现（Java）&lt;/h3&gt;
+&lt;p&gt;类的总体结构应为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.util.Random;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Find&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Find&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums) {...}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getKElement&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k) {...}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;randomSelect&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; left, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; right) {...}   &lt;span style=&#34;color:#75715e&#34;&gt;// 递归部分，选取随机数、划分后判断&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;partition&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; random, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; p, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; q) {...}   &lt;span style=&#34;color:#75715e&#34;&gt;// 划分部分&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;swap&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j) {...}   &lt;span style=&#34;color:#75715e&#34;&gt;// 用于交换数组元素的工具方法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;先编写划分部分的方法，输入数组、随机索引值、左右限制，输出划分后pivot的索引值：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;partition&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; random, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; p, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; q) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (p &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; q) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; pivot &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (pivot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;p&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;) p&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        swap(nums, p, random);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        random &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; p;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (pivot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;q&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;) q&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        swap(nums, q, random);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        random &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; q;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; random;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编写递归部分：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
