@@ -5,6 +5,7 @@ title = 'Stream流进行数组排序'
 tags = ["java", "Stream流"]
 categories = ["Java学习"]
 showToc = true
+math = false
 
 +++
 

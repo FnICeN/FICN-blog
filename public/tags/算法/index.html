@@ -131,6 +131,31 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">基于归并排序的逆序数统计
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>问题定义 给定一个长度为n的整数数组，计算数组中的逆序对的数量并返回
+逆序对的定义如下：对于数组的第i个和第j个元素，如果满足i&lt;j且a[i]&gt;a[j]，则其为一个逆序对；否则不是。
+数据范围
+1≤n≤100000，数组中的元素的取值范围 [1,1e9]。
+示例：输入[2,3,4,5,6,1]，输出5
+解释：逆序对共5对,[2, 1], [3, 1], [4, 1], [5, 1], [6, 1]
+本题暴力硬解的复杂度为$O(n^2)$，较为繁琐，于是考虑是否存在复杂度为$O(nlogn)$的算法
+要求逆序数，就不能在寻找数对时未经相关处理就更改数组元素顺序打乱原有顺序，因此要找到一种在实施过程中能够在一定程度上保留元素顺序关系的算法。
+设想一种很理想的情况：元素a与b满足逆序数的定义（即a&gt;b且i&lt;j），同时还已知有一批比a大的数，那么很容易推知这一批数都可以与b构成逆序数，其个数就等于这批数的个数
+以上情况正好符合归并排序的过程，首先在这里复习一下归并排序的原理：
+归并排序 归并排序先递归地两两划分数组，每轮递归中都将整个数组分为左右两个部分，然后在每一次左右划分完成后，为左右两个数组各设置一个指针i与j，比较大小并将小者放入一个临时数组中（这个临时数组的长度是本轮划分左右数组的总长），放入一边的指针前进一步，再继续比较。当某一边全部比较完后，将可能还未放完的另一边数组元素全部放入临时数组
+代码可以是：
+class Solution { public int[] mergeSort(int[] nums, int l, int r) { // l=r证明已经划分到单个元素，返回的排序数组就是以这个单元素组成的数组 if (l == r) return new int[]{nums[l]}; int mid = (l &#43; r) / 2; int[] leftNums = mergeSort(nums, l, mid); int[] rightNums = mergeSort(nums, mid&#43;1, r); // 能执行到这里，说明左右划分都已完成，此时如果左右都是单元素数组[2][3]，则这个栈会返回[2,3] // 此时如果左右都是多元素数组，那至少能保证这两个数组各自的内部是有序的 int[] tempNums = new int[leftNums.length &#43; rightNums.length]; int i = 0, j = 0, m = 0; // i左j右，m是临时数组索引 while (i &lt; leftNums.length &amp;&amp; j &lt; rightNums.length) tempNums[m&#43;&#43;] = leftNums[i] &lt; rightNums[j] ? leftNums[i&#43;&#43;] : rightNums[j&#43;&#43;]; // 接下来处理一边走完一边还没走完的情况，由于单边必定已经有序，所以直接顺序放入即可 while (i &lt; leftNums.length) tempNums[m&#43;&#43;] = leftNums[i&#43;&#43;]; while (j &lt; rightNums.length) tempNums[m&#43;&#43;] = rightNums[j&#43;&#43;]; return tempNums; } } 题解 回到本题，核心在于：在归并排序比较leftNums[i]与rightNums[j]的大小关系时，如果正好左大于右，（即满足逆序数的定义），则可以直接确定这两个数之间的数都满足逆序数的定义
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-11 20:25:12 +0800 CST'>December 11, 2024</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to 基于归并排序的逆序数统计" href="http://localhost:1313/posts/%E5%9F%BA%E4%BA%8E%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E9%80%86%E5%BA%8F%E6%95%B0%E7%BB%9F%E8%AE%A1/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">顺序统计
     </h2>
   </header>

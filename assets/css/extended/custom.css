@@ -1,0 +1,30 @@
+/* 设置代码块字体 */
+code {
+  font-family: Menlo, Monaco, Consolas, "Courier New", "PingFang SC",
+    "Hiragino Sans GB", "Droid Sans Fallback", monospace;
+}
+
+/* 使用霞鹜文楷字体 */
+body {
+  font-family: "LXGW WenKai Screen", sans-serif;
+}
+
+/* body中使用字体后会导致公式大小错误，所以重新设置大小 */
+.MathJax.CtxtMenu_Attached_0 {
+  font-size: 113.1% !important;
+}
+
+/* 明亮模式下选中背景颜色 */
+:root {
+  ::selection {
+    background-color: #cfcfcf;
+  }
+}
+
+/* 暗黑模式下选中字体与背景颜色 */
+.dark {
+  ::selection {
+    color: #c4c4c5;
+    background-color: #34495e;
+  }
+}

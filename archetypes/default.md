@@ -5,4 +5,5 @@ title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 tags = [""]
 categories = [""]
 showToc = true
+math = true
 +++
