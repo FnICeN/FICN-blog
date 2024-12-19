@@ -257,7 +257,7 @@ class Solution {
 </span></span></code></pre></div><h2 id="题解">题解<a hidden class="anchor" aria-hidden="true" href="#题解">#</a></h2>
 <p>回到本题，核心在于：在归并排序比较<code>leftNums[i]</code>与<code>rightNums[j]</code>的大小关系时，<strong>如果正好左大于右，（即满足逆序数的定义），则可以直接确定这两个数之间的数都满足逆序数的定义</strong></p>
 <blockquote>
-<p>例如，<code>[2,4,6,7]</code>和<code>[1,3,5,6]</code>之间，比较<code>2</code>与<code>1</code>发现2&gt;1，那么包括左侧数组包括<code>2</code>在内的剩余其他元素都与<code>1</code>形成逆序数关系，即<code>[2,1],[4,1],[6,1],[7,1]</code></p>
+<p>例如，<code>[2,4,6,7]</code>和<code>[1,3,5,6]</code>之间，比较<code>2</code>与<code>1</code>发现2&gt;1，那么左侧数组中包括<code>2</code>在内的剩余元素都与<code>1</code>形成逆序数关系，即<code>[2,1],[4,1],[6,1],[7,1]</code></p>
 <p>继续操作，将<code>1</code>放入临时数组，<code>j</code>指向<code>3</code>，2&lt;3，将<code>2</code>放入临时数组，<code>i</code>指向<code>4</code></p>
 <p>此时再次发生左大于右即4&gt;3，则又组成了一批逆序数：<code>[4,3],[6,3],[7,3]</code></p>
 <p>如上过程，不断循环</p>

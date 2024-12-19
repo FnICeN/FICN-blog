@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Categories | FICN&#39;s blog</title>
+<title>Vue | FICN&#39;s blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/categories/">
+<link rel="canonical" href="http://localhost:1313/tags/vue/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc146017782c2a9996a03106a3160ba9f740b07a124546f3e54f360c84a1e788.css" integrity="sha256-/BRgF3gsKpmWoDEGoxYLqfdAsHoSRUbz5U82DISh54g=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/vue/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/vue/">
 <noscript>
     <style>
         #theme-toggle,
@@ -111,7 +111,7 @@
             </li>
             <li>
                 <a href="http://localhost:1313/categories" title="分类">
-                    <span class="active">分类</span>
+                    <span>分类</span>
                 </a>
             </li>
             <li>
@@ -127,22 +127,44 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"> 
 <header class="page-header">
-    <h1>Categories</h1>
+  <h1>
+    Vue
+  </h1>
 </header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="http://localhost:1313/categories/java%E5%AD%A6%E4%B9%A0/">Java学习 <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/categories/%E5%89%8D%E7%AB%AF/">前端 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="http://localhost:1313/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习 <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Vue&#43;TailwindCSS实现输入框动效
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>实现目标：
+静态属性：输入框位于页面顶端、居中，圆角，框体内部为白色，1/5屏幕宽度，无外边框、框体阴影，闪烁光标为蓝色
+动态属性：鼠标悬停时框体微微变大；聚焦后出现蓝色外边框，宽度增长且仍保持居中，框体阴影变为蓝色
+其他：聚焦输入框时，背景逐渐模糊，取消聚焦后恢复
+静态设计 HTML中的&lt;input&gt;标签可以承担基本的输入功能，创建文件SearchItem.vue，接下来使用TailwindCSS对默认输入框标签的样式进行调整
+对于输入框位置与默认宽度的要求，可以使用网格布局，每行5列，而输入框位于第三列，这一布局设定应当在上层的文件中，而非SearchItem文件，所以这里先不对其进行设置
+圆角、无外边框、框体阴影和蓝色光标可以使用rounded-xl、outline-none、shadow-xl、caret-blue-500来实现
+考虑到后续会添加样式切换的动效，需要再加上transition-all以保证样式更改过程是平滑的
+动态设计 TailwindCSS中，鼠标悬停的样式只需要使用hover:即可；获取焦点时的样式只需要使用focus:
+悬停时框体变大：hover:scale-105
+为了使悬停 -&gt; 聚焦之后框体大小保持稳定，同时设置focus:scale-105
+聚焦后出现蓝色外边框：focus:border-2、border-blue-500
+宽度增长且仍居中，可以将元素左移的同时将宽度增加与之相同的长度：focus:-translate-x-40、focus:w-[40rem]
+框体阴影变为蓝色：focus:shadow-blue-300/50
+另外，可以设置转化的时长，这里设置400ms：duration-[400ms]
+至此，对输入框的样式设计完成：
+&lt;template&gt; &lt;input placeholder=&#34;搜索&#34; class=&#34;shadow-xl duration-[400ms] hover:scale-105 focus:-translate-x-40 focus:w-[40rem] focus:border-2 focus:shadow-blue-300/50 focus:scale-105 border-blue-500 px-5 py-3 rounded-xl w-full transition-all outline-none caret-blue-500&#34; name=&#34;search&#34; type=&#34;search&#34; /&gt; &lt;/template&gt; 上层结构 在上层文件中引入SearchItem.vue，然后设置网格布局并使这一模板位于5列中的第三列：
+&lt;script setup lang=&#34;ts&#34;&gt; import searchItem from &#34;./components/SearchItem.vue&#34;; &lt;/script&gt; &lt;template&gt; &lt;div&gt; &lt;div class=&#34;grid grid-cols-5 gap-4 mt-2&#34;&gt; &lt;searchItem class=&#34;col-start-3&#34; /&gt; &lt;/div&gt; &lt;/div&gt; &lt;/template&gt; 效果如下：
+为了使输入框能够输入内容，需要将输入的文字绑定至Vue中：
+&lt;script setup lang=&#34;ts&#34;&gt; import { ref } from &#34;vue&#34;; defineOptions({ name: &#34;searchItem&#34;, }); const input = ref(&#34;&#34;); &lt;/script&gt; &lt;template&gt; &lt;input placeholder=&#34;搜索&#34; class=&#34;shadow-xl duration-[400ms] hover:scale-105 focus:-translate-x-40 focus:w-[40rem] focus:border-2 focus:shadow-blue-300/50 focus:scale-105 border-blue-500 px-5 py-3 rounded-xl w-full transition-all outline-none caret-blue-500&#34; name=&#34;search&#34; type=&#34;search&#34; v-model=&#34;input&#34; /&gt; &lt;/template&gt; 背景模糊 接下来添加背景模糊
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-19 10:18:12 +0800 CST'>December 19, 2024</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to Vue&#43;TailwindCSS实现输入框动效" href="http://localhost:1313/posts/vue&#43;tailwindcss%E5%AE%9E%E7%8E%B0%E8%BE%93%E5%85%A5%E6%A1%86%E5%8A%A8%E6%95%88/"></a>
+</article>
     </main>
     
 <footer class="footer">
