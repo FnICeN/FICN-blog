@@ -64,7 +64,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;template&lt;/span&gt;&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;效果如下：&lt;/p&gt;
 &lt;figure class=&#34;align-center &#34;&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;../../img/%e6%90%9c%e7%b4%a2%e6%a1%86%e5%8a%a8%e6%95%88.gif#center&#34; width=&#34;50%&#34; height=&#34;50%&#34;/&gt; 
+    &lt;img loading=&#34;lazy&#34; src=&#34;../../img/%e6%90%9c%e7%b4%a2%e6%a1%86%e5%8a%a8%e6%95%88.gif#center&#34;/&gt; 
 &lt;/figure&gt;
 
 &lt;p&gt;为了使输入框能够输入内容，需要将输入的文字绑定至Vue中：&lt;/p&gt;
