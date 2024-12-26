@@ -10,7 +10,7 @@ category = "categories"
 
 [params]
 ShowCodeCopyButtons = true
-ShowReadingTime = true
+# ShowReadingTime = true
 
 [params.profileMode]
 enabled = true
