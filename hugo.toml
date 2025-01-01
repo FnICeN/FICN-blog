@@ -65,4 +65,13 @@ url = "https://github.com/FnICeN"
     weight = 5
 
 
-
+[markup.goldmark.extensions.passthrough]
+      enable = true
+      delimiters.block = [
+        ["\\[", "\\]"],
+        ["$$", "$$"]
+      ]
+      delimiters.inline = [
+        ["\\(", "\\)"],
+        ["$", "$"]
+      ]
