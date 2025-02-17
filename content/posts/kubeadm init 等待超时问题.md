@@ -82,6 +82,11 @@ SystemdCgroup = true
 [plugins."io.containerd.grpc.v1.cri".registry]
 # config_path，配置镜像加速地址（此目录之后手动创建）
 config_path = "/etc/containerd/certs.d"
+# 配置k8s拉取时的镜像
+[plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+  endpoint = ["https://ok5mwqnl.mirror.aliyuncs.com","https://docker.1ms.run"]
+[plugins."io.containerd.grpc.v1.cri".registry.mirrors."k8s.gcr.io"]
+  endpoint = ["registry.aliyuncs.com/google_containers"]
 ```
 
 然后创建目录：`mkdir /etc/containerd/certs.d/docker.io -pv`，在`docker.io`中新建一个`hosts.toml`文件，文件中的镜像链接是[配置docker](Docker配置阿里云镜像后仍报错问题.md)时得到的镜像链接：
@@ -112,3 +117,5 @@ br_netfilter
 [k8s初始化master失败 Waiting for the kubelet to boot up the control plane asInitial timeout of 40s passed.](https://blog.csdn.net/weixin_43639667/article/details/144606574)
 
 [ubuntu20.04安装Kubernetes(k8s 1.27.4)](https://www.cnblogs.com/tjw-bk/p/17566029.html)
+
+[ubuntu系统安装k8s1.28精简步骤](https://blog.csdn.net/qq_31649693/article/details/137338828)
