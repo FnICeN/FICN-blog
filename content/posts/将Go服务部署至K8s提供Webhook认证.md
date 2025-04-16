@@ -49,7 +49,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webhook-auth
-  namespace: kube-system  # 命名空间
+  namespace: kube-authen  # 命名空间
   labels:
     app: webhook-auth
 spec:
@@ -79,10 +79,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webhook-auth-svc
-  namespace: kube-system  # 与Deployment使用相同的命名空间
+  namespace: kube-authen  # 与Deployment使用相同的命名空间
 spec:
   ports:
-  - port: 443  # 外部访问端口，通常使用标准HTTPS端口
+  - port: 9998  # 外部访问端口
     targetPort: 9999  # 指向容器的9999端口
     name: https
   selector:
@@ -124,9 +124,9 @@ node@node01:~/images$ sudo ctr -n k8s.io images import webhook-auth.tar
   "preferences": {},
   "clusters": [
     {
-      "name": "github-authn",
+      "name": "webhook-authn",
       "cluster": {
-        "server": "http://webhook-auth-svc.kube-system.svc.cluster.local:9998/auth"
+        "server": "http://webhook-auth-svc.kube-authen.svc.cluster.local:9998/auth"
       }
     }
   ],
@@ -142,7 +142,7 @@ node@node01:~/images$ sudo ctr -n k8s.io images import webhook-auth.tar
     {
       "name": "webhook",
       "context": {
-        "cluster": "github-authn",
+        "cluster": "webhook-authn",
         "user": "authn-apiserver"
       }
     }
@@ -171,6 +171,20 @@ spec:
   - --authentication-token-webhook-version=v1
   - ...
 ```
+
+## 注
+
+使用DNS形式：`http://webhook-auth-svc.kube-authen.svc.cluster.local:9998/auth`访问Webhook服务经常失败，暂不知具体原因，后来使用ClusterIP作为替代，暂时解决了问题
+
+查看ClusterIP：
+
+```bash
+ficn@master:~$ kubectl get svc -n kube-authen
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+webhook-auth-svc   ClusterIP   10.244.42.186   <none>        9998/TCP   50m
+```
+
+由此，访问Webhook服务的URL为：`http://10.244.42.186:9998/auth`
 
 ## 参考
 

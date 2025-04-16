@@ -283,7 +283,7 @@ import (
 	"k8s.io/klog/v2"
 )
 var (
-	ldapUrl = "ldap://" + "localhost:389"   // ldap服务默认运行在本地389端口
+	ldapUrl = "ldap://" + "192.168.92.128:389"   // ldap服务默认运行在本地389端口，这里写明IP是为了便于集群部署后寻址
 )
 func authByLdap(username, password string) error {
 	groups, err := getLdapGroups(username, password)
@@ -369,7 +369,7 @@ ficn@master:~$ ./hook-demo
 ```shell
 # send.sh
 # 设置变量
-API_SERVER="localhost:9999"
+API_SERVER="192.168.92.128:9999"
 TOKEN="ldap:jack:123456"
 
 # 直接使用curl发送请求
