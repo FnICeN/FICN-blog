@@ -30,7 +30,7 @@ math = false
 | Omit configuration     | No          |
 | DNS domain             | example.com |
 | Organization name      | orgldap     |
-| Administrator password | 123456      |
+| Administrator password | 647252      |
 | Remove database        | No          |
 | Move old database      | Yes         |
 
