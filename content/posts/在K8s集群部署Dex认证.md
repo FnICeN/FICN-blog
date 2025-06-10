@@ -377,7 +377,7 @@ ficn@master:~/dex-k8s-authenticator$ helm install dka --namespace dex --values d
 
 使用浏览器访问DKA前端页面`192.168.92.128:30001`即可输入LDAP服务器中的用户完成认证，认证成功的页面：
 
-{{< figure align=center src="../../img/DKA1.png">}}
+{{< figure align=center src="https://img.fnicen.top/PicGo/DKA1.png">}}
 
 **注意，到目前为止仅仅完成了将Dex部署至集群并成功连接到LDAP，得以在前端页面进行认证的这个操作，还并未将认证接入集群**，因此如果按照上面成功页面进行操作是**无效的**，为此还需要配置API-Server的OIDC
 
@@ -465,7 +465,7 @@ caCerts:
 
 当`k8s_ca_pem_base64_encoded`设置完成，DKA认证成功后就会在指导页面中自动生成config的证书配置，成功页面如下：
 
-{{< figure align=center src="../../img/DKA2.png">}}
+{{< figure align=center src="https://img.fnicen.top/PicGo/DKA2.png">}}
 
 ### OIDC
 

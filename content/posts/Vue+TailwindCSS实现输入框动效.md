@@ -77,7 +77,7 @@ import searchItem from "./components/SearchItem.vue";
 
 效果如下：
 
-{{< figure align=center src="../../img/搜索框动效.gif" >}}
+![](https://img.fnicen.top/PicGo/搜索框动效.gif)
 
 为了使输入框能够输入内容，需要将输入的文字绑定至Vue中：
 

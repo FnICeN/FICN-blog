@@ -112,7 +112,7 @@ AList安装完成后，浏览器输入`127.0.0.1:5244`即可访问系统前端�
 
   > 如果这个属性没有设置到挂载的硬盘上，会导致之后所有本地文件都存储在树莓派自己的存储空间中
 
-{{< figure align=center src="../../img/AList配置本地存储.png" height=30% width=30% >}}
+{{< figure align=center src="https://img.fnicen.top/PicGo/AList配置本地存储.png" height=30% width=30% >}}
 
 以上三个属性配置完成即可，其他的配置保持默认即可，点击【保存】并返回主页即可看到刚刚添加的“本地”文件夹
 
@@ -124,7 +124,7 @@ AList安装完成后，浏览器输入`127.0.0.1:5244`即可访问系统前端�
 
 想要开放权限也十分简单，在【管理】页面选择【用户】，对admin角色的权限进行编辑，开放【WEBDAV读取】和【WEBDAV管理】即可
 
-{{< figure align=center src="../../img/AList编辑权限.png">}}
+![权限编辑](https://img.fnicen.top/PicGo/AList编辑权限.png)
 
 ## 参考
 
