@@ -229,6 +229,7 @@ spec:
     spec:
       containers:
         - name: postgres
+          # 使用国内镜像源
           image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/postgres:17
           env:
             - name: POSTGRES_USER
@@ -434,7 +435,7 @@ users:
 
 ![kubelogin唤起](https://img.fnicen.top/PicGo/kubelogin唤起认证.png)
 
-输入用户名`jack`和密码`123456`后，成功获取节点信息：
+输入用户名`jack`和密码`123456`完成登录后回到终端，可以看到成功获取节点信息：
 
 ```bash
 ficn@master:~$ kubectl get no
@@ -442,3 +443,9 @@ NAME     STATUS   ROLES           AGE     VERSION
 master   Ready    control-plane   54d     v1.28.2
 node01   Ready    <none>          5d22h   v1.28.2
 ```
+
+## 参考
+
+[【官方】在 Kubernetes 上开始使用 Keycloak](https://keycloak.com.cn/getting-started/getting-started-kube)
+
+[在 Kubernetes 中使用 Keycloak OIDC Provider 对用户进行身份验证](https://cloud.tencent.com/developer/article/1983889)
