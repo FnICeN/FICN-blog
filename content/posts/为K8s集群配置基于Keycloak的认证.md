@@ -2,8 +2,8 @@
 date = '2025-06-10T10:03:08+08:00'
 draft = false
 title = '为K8s集群配置基于Keycloak的认证'
-tags = ["Kubernetes", "心得"]
-categories = ["经验", "k8s学习"]
+tags = ["Kubernetes", "Keycloak", "心得"]
+categories = ["k8s学习"]
 showToc = true
 math = false
 
