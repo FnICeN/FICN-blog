@@ -1,6 +1,6 @@
 +++
 date = '2025-08-15T11:47:25+08:00'
-draft = true
+draft = false
 title = '使用VSCode解决fork项目的同步冲突'
 tags = ["心得", "Git"]
 categories = ["经验"]
@@ -19,7 +19,7 @@ Github无法在线解决冲突，这里使用VSCode解决
 git fetch upstream
 ```
 
-接着输入`git branch`确保正在需要同步的分支上，在本例中，只存在一个分支`master`，如果存在多个分支，则使用`git checkout <branch>`切换即可
+接着输入`git branch`确保正在需要同步的分支上，在本例中，只存在一个分支`master`；如果存在多个分支，则使用`git checkout <branch>`切换即可
 
 执行合并：
 

@@ -16,6 +16,31 @@ body {
 
 /* 明亮模式下选中背景颜色 */
 :root {
+  /* Note 类型 */
+  --admonition-note-bg: #eaf4fe;
+  --admonition-note-border: #4ea1f7;
+  --admonition-note-title: #2077c7;
+
+  /* Warning 类型 */
+  --admonition-warning-bg: #fff8e1;
+  --admonition-warning-border: #ffc107;
+  --admonition-warning-title: #b27d12;
+
+  /* Danger 类型 */
+  --admonition-danger-bg: #fdecea;
+  --admonition-danger-border: #f44336;
+  --admonition-danger-title: #b71c1c;
+
+  /* Tip 类型 */
+  --admonition-tip-bg: #e6f9ec;
+  --admonition-tip-border: #4caf50;
+  --admonition-tip-title: #388e3c;
+
+  /* Important 类型 */
+  --admonition-important-bg: #f3eafe;
+  --admonition-important-border: #a259e6;
+  --admonition-important-title: #7c32b8;
+
   ::selection {
     background-color: #cfcfcf;
   }
@@ -23,8 +48,83 @@ body {
 
 /* 暗黑模式下选中字体与背景颜色 */
 .dark {
+  --admonition-note-bg: #223344;
+  --admonition-note-border: #4ea1f7;
+  --admonition-note-title: #4ea1f7;
+
+  --admonition-warning-bg: #3a2d0b;
+  --admonition-warning-border: #ffc107;
+  --admonition-warning-title: #ffc107;
+
+  --admonition-danger-bg: #352424;
+  --admonition-danger-border: #f44336;
+  --admonition-danger-title: #f44336;
+
+  --admonition-tip-bg: #1f3324;
+  --admonition-tip-border: #4caf50;
+  --admonition-tip-title: #4caf50;
+
+  --admonition-important-bg: #2d2240;
+  --admonition-important-border: #a259e6;
+  --admonition-important-title: #a259e6;
+
   ::selection {
     color: #c4c4c5;
     background-color: #34495e;
   }
+}
+
+.admonition {
+  border-left: 4px solid;
+  padding: 12px 16px;
+  margin: 1em 0;
+  border-radius: 4px;
+  background: var(--admonition-note-bg);
+}
+
+.admonition.note {
+  background: var(--admonition-note-bg);
+  border-color: var(--admonition-note-border);
+}
+.admonition.note .admonition-title {
+  color: var(--admonition-note-title);
+}
+
+.admonition.warning {
+  background: var(--admonition-warning-bg);
+  border-color: var(--admonition-warning-border);
+}
+.admonition.warning .admonition-title {
+  color: var(--admonition-warning-title);
+}
+
+.admonition.danger {
+  background: var(--admonition-danger-bg);
+  border-color: var(--admonition-danger-border);
+}
+.admonition.danger .admonition-title {
+  color: var(--admonition-danger-title);
+}
+
+.admonition.tip {
+  background: var(--admonition-tip-bg);
+  border-color: var(--admonition-tip-border);
+}
+.admonition.tip .admonition-title {
+  color: var(--admonition-tip-title);
+}
+
+.admonition.important {
+  background: var(--admonition-important-bg);
+  border-color: var(--admonition-important-border);
+}
+.admonition.important .admonition-title {
+  color: var(--admonition-important-title);
+}
+
+.admonition-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
 }
