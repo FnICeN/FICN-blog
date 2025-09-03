@@ -49,7 +49,7 @@ math = false
 
 执行`mvn package`后会打包为一个fat jar，文件名GetDeviceInfo-1.0-SNAPSHOT-shaded.jar
 
-> 若不使用fat jar，则安装的exe会提示启动JVM失败
+{{< admonition warning "警告" >}}若不使用fat jar，则安装的exe会提示启动JVM失败{{< /admonition >}}
 
 执行以下`jpackage`命令：
 
@@ -64,7 +64,7 @@ jpackage --input target/ --name LocalHWService --main-jar GetDeviceInfo-1.0-SNAP
 - `vendor`：发行公司名；
 - `description`：文件描述，会显示在任务管理器中
 
-> 一般来说，`vendor`和`description`属性是无需特别指定的，但由于执行这`jpackage`指令会使用WiX，而我所安装的WiX（v3.14.1）的这两个属性默认会使用非ASCII字符，这就导致了`jpackage`命令报错，所以需要手动指定这两个属性，保证是纯英文
+{{< admonition tip "说明" >}}一般来说，`vendor`和`description`属性是无需特别指定的，但由于执行这`jpackage`指令会使用WiX，而我所安装的WiX（v3.14.1）的这两个属性默认会使用非ASCII字符，这就导致了`jpackage`命令报错，所以需要手动指定这两个属性，保证是纯英文{{< /admonition >}}
 
 命令完成后在当前目录生成LocalHWService-1.0.exe文件，这个文件**并不能直接运行服务，而是一个安装程序**
 
