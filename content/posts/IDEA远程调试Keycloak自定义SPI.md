@@ -61,4 +61,4 @@ bin\kc.bat start-dev
 
 如此一来，每次修改代码、需要调试时，无需重新打包、导入自定义SPI的繁复操作，点击按钮即可自动编译项目、更新JVM中运行的class文件
 
-{{< admonition important "局限" >}}由于HotSwap只能对编译生成的class文件热更新，所以本文章的方法并不能对前端FTL文件进行实时调试，每当修改了FTL文件时，仍然需要重新打包并导入Keycloak{{< /admonition >}}
+{{< admonition important "局限" >}}由于HotSwap只能对编译生成的class文件热更新，所以本文章的方法并不能对前端FTL文件进行实时调试，每当修改了FTL文件时，仍然需要重新打包并导入Keycloak；另外，HotSwap也不支持对类名、类增减以及方法增减的热更新{{< /admonition >}}
