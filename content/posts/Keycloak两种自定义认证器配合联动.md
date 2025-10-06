@@ -327,3 +327,14 @@ public void action(AuthenticationFlowContext authenticationFlowContext) {
 }
 ```
 
+最后，只需要将打包得到的三个jar包放入`providers/`目录中即可实现预期功能，三个jar包为：
+
+- DeviceAuthApi.jar
+- DeviceAuthProviderImpl.jar
+- DeviceAuth.jar
+
+{{< admonition important "重要说明" >}}
+
+原理上看，只要将上层业务与操作逻辑**完整打包**，就无需将数据模型jar放入`providers/`目录，但我自己使用Maven打包时，未将二者分别与数据模型jar合并打包，所以目前**需要将数据模型jar也放置到`providers/`中运行**
+
+{{< /admonition >}}

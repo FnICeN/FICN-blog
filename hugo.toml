@@ -79,3 +79,6 @@ url = "https://github.com/FnICeN"
         ["\\(", "\\)"],
         ["$", "$"]
       ]
+
+[params.comments]
+  enable = true
