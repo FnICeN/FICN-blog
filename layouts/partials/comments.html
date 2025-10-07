@@ -14,3 +14,35 @@
   crossorigin="anonymous"
   async
 ></script>
+
+<script>
+function setGiscusTheme(theme) {
+  const iframe = document.querySelector('iframe.giscus-frame');
+  if (!iframe) return;
+  iframe.contentWindow.postMessage({
+    giscus: {
+      setConfig: {
+        theme: theme
+      }
+    }
+  }, 'https://giscus.app');
+}
+
+function getCurrentTheme() {
+  return document.body.classList.contains('dark') ? 'dark' : 'light';
+}
+
+// 监听 body 的 class 变化
+const observer = new MutationObserver(function() {
+  setGiscusTheme(getCurrentTheme());
+});
+observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+// 页面加载后同步一次，确保初始状态正确
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(() => {
+    setGiscusTheme(getCurrentTheme());
+  }, 500);
+});
+</script>
+
