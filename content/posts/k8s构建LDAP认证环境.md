@@ -30,7 +30,7 @@ math = false
 | Omit configuration     | No          |
 | DNS domain             | example.com |
 | Organization name      | orgldap     |
-| Administrator password | 647252      |
+| Administrator password | 123456      |
 | Remove database        | No          |
 | Move old database      | Yes         |
 
@@ -64,7 +64,7 @@ modifyTimestamp: 20250401075602Z
 对于组织管理者，只要在基准DN（即`dc=example,dc=com`）上增加`cn=Manager`作为基本名称即可，其`objectClass`为`organizationRole`：
 
 ```yaml
-dn: cn=Manager,dc=demo,dc=com
+dn: cn=Manager,dc=example,dc=com
 objectClass: organizationalRole
 cn: Manager
 description: 组织管理者
@@ -73,7 +73,7 @@ description: 组织管理者
 对于人员组织单位，应用于存放“人员”条目，设置为：
 
 ```yaml
-dn: ou=People,dc=demo,dc=com
+dn: ou=People,dc=example,dc=com
 objectClass: organizationalUnit
 ou: People
 ```
@@ -81,19 +81,19 @@ ou: People
 对于组的组织单位，与人员组织单位类似：
 
 ```yaml
-dn: ou=Group,dc=demo,dc=com
+dn: ou=Group,dc=example,dc=com
 objectClass: organizationalUnit
 ou: Group
 ```
 
-执行`ldapadd -x -D cn=admin,dc=demo,dc=com -w 123456 -f base.ldif`部署实施组织设定
+执行`ldapadd -x -D cn=admin,dc=example,dc=com -w 123456 -f base.ldif`部署实施组织设定
 
 ### 增加人员
 
 编写文件`adduser.ldif`：
 
 ```yaml
-dn: cn=jack,ou=People,dc=demo,dc=com   # 唯一标识DN
+dn: cn=jack,ou=People,dc=example,dc=com   # 唯一标识DN
 changetype: add   # 增加操作
 objectClass: inetOrgPerson   # 对象类型
 cn: jack   # 通用名称
@@ -104,7 +104,7 @@ mail: jack@demo.com   # 邮箱
 displayName: 张三   # 姓名
 ```
 
-执行`ldapadd -x -D cn=admin,dc=demo,dc=com -w 123456 -f adduser.ldif`添加此人员到`ou=People`的组织单位
+执行`ldapadd -x -D cn=admin,dc=example,dc=com -w 123456 -f adduser.ldif`添加此人员到`ou=People`的组织单位
 
 ### 添加到组
 
@@ -143,7 +143,7 @@ add: member
 member: cn=jack,ou=People,dc=example,dc=com
 ```
 
-执行`ldapadd -x -D cn=admin,dc=demo,dc=com -w 123456 -f add_to_group.ldif`
+执行`ldapadd -x -D cn=admin,dc=example,dc=com -w 123456 -f add_to_group.ldif`
 
 ## Webhook与认证调用模块
 
