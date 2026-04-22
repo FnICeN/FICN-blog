@@ -1,9 +1,9 @@
 +++
 date = '2025-10-23T11:08:21+08:00'
 draft = false
-title = 'Keycloak误删PV补救措施'
-tags = ["Keycloak", "debug"]
-categories = ["Keycloak学习"]
+title = 'K8s误删PV补救措施'
+tags = ["Kubernetes", "debug"]
+categories = ["经验"]
 showToc = true
 math = false
 
@@ -140,7 +140,7 @@ master@master:~/authen/pvc$ kubectl patch pvc ldap-data-pvc -n authen -p '{"meta
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pvc-539fd3b7-12ed-488b-9c86-59e07de28b05  # 酌情修改
+  name: pvc-539fd3b7-12ed-488b-9c86-59e07de28b05 # 酌情修改
 spec:
   capacity:
     storage: 10Gi
@@ -149,7 +149,7 @@ spec:
   storageClassName: local-path
   persistentVolumeReclaimPolicy: Delete
   local:
-    path: /opt/local-path-provisioner/pvc-539fd3b7-12ed-488b-9c86-59e07de28b05  # 酌情修改
+    path: /opt/local-path-provisioner/pvc-539fd3b7-12ed-488b-9c86-59e07de28b05 # 酌情修改
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -157,11 +157,10 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - master  # 酌情修改
+                - master # 酌情修改
   claimRef:
-    namespace: authen  # 酌情修改
-    name: ldap-config-pvc  # 酌情修改
-
+    namespace: authen # 酌情修改
+    name: ldap-config-pvc # 酌情修改
 ```
 
 然后执行`kubectl apply -f reclaim.yaml`即可，执行`kubectl get pv`查看是否已经重建，此时的PV还没有绑定PVC，所以状态应该是`Available`
@@ -182,7 +181,7 @@ metadata:
   namespace: authen
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
@@ -195,7 +194,7 @@ metadata:
   namespace: authen
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
