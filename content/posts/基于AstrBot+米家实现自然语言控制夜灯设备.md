@@ -235,3 +235,5 @@ async def operate_light(self, event: AstrMessageEvent, on: bool):
 在微信ClawBot中发送/登录，即可得到二维码，进行认证后就可以通过自然语言下达指令了，LLM会自动决定是否调用控制夜灯的Tool
 
 结合AstrBot的新特性【定时任务】，还可以实现定时开关灯的复杂操作
+
+{{< figure align=center height=30% width=30% src="https://img.fnicen.top/PicGo/light_control_example.png">}}
